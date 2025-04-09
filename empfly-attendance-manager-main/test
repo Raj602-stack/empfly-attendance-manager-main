@@ -1,0 +1,29 @@
+server {
+
+   server_name gbm-api.ipxp.in;
+
+   error_log /var/log/nginx/gbm-api-error.log;
+   access_log /var/log/nginx/gbm-api-access.log;
+
+
+
+   location / {
+        include proxy_params;
+        proxy_pass http://localhost:8000;
+   }
+
+   listen 443 ssl;
+   ssl_certificate /etc/ssl/certs/devopsjar.com.crt;
+   ssl_certificate_key /etc/ssl/private/devopsjar.com.key;
+
+}
+
+server {
+    if ($host = gbm-api.ipxp.in) {
+        return 301 https://$host$request_uri;
+    }
+
+    server_name gbm-api.ipxp.in;
+    listen 80;
+    return 404;
+}
