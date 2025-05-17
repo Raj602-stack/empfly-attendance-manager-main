@@ -8,7 +8,7 @@ from visitor.models import Visitor
 from organization.models import Role
 
 
-def rename_image(attribute: uuid.uuid4, filename: "file") -> str:
+def rename_image(attribute: uuid.uuid4, filename: str) -> str:
     # Gets the file extension
     ext = filename.split(".")[-1]
     # Extracts the seconds passed and the first 3 milliseconds since epoch
@@ -21,12 +21,12 @@ def rename_image(attribute: uuid.uuid4, filename: "file") -> str:
     return filename
 
 
-def rename_member_fr_images(instance: models.Model, filename: "file") -> str:
+def rename_member_fr_images(instance: models.Model, filename: str) -> str:
     filename = rename_image(instance.uuid, filename)
     return os.path.join("member/face_recognition/", filename)
 
 
-def rename_profile_image(instance: models.Model, filename: "file") -> str:
+def rename_profile_image(instance: models.Model, filename: str) -> str:
     filename = rename_image(instance.uuid, filename)
     return os.path.join(f"profile/{instance.uuid}/", filename)
 

@@ -3,7 +3,15 @@ from django.db.models import Q
 from django.contrib.auth.models import AbstractUser, BaseUserManager
 from django.utils.translation import gettext_lazy as _
 from django.utils import crypto
-from env import SUPER_USERS
+# from env import SUPER_USERS
+
+import environ
+env = environ.Env()
+environ.Env.read_env()
+
+SUPER_USERS = env("SUPER_USERS", default="").split(",")
+
+
 from rest_framework.authtoken.models import Token
 
 import datetime as dt
@@ -11,7 +19,7 @@ import os
 import uuid
 
 
-def rename_image(attribute: uuid.uuid4, filename: "file") -> str:
+def rename_image(attribute: uuid.uuid4, filename: str) -> str:
     # Get the file extension
     ext = filename.split(".")[-1]
     # Extract the seconds passed and the first 3 milliseconds since epoch

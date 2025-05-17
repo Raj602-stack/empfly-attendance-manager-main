@@ -616,11 +616,11 @@ class MemberRoleAPI(views.APIView):
         org_uuid = request.headers.get("organization-uuid")
 
         member_uuid = self.kwargs.get("uuid")
-        member = fetch_data.get_member_by_uuid(org.uuid, member_uuid)
+        member = fetch_data.get_member_by_uuid(org_uuid, member_uuid)
         if member is None:
             return read_data.get_404_response("Member")
 
-        if fetch_data.has_access(org.uuid, request.user, "member", member) is False:
+        if fetch_data.has_access(org_uuid, request.user, "member", member) is False:
             return read_data.get_403_response()
 
         serializer = self.serializer_class(member)
@@ -672,11 +672,11 @@ class MemberManagerAPI(views.APIView):
         org_uuid = request.headers.get("organization-uuid")
 
         member_uuid = self.kwargs.get("uuid")
-        member = fetch_data.get_member_by_uuid(org.uuid, member_uuid)
+        member = fetch_data.get_member_by_uuid(org_uuid, member_uuid)
         if member is None:
             return read_data.get_404_response("Member")
 
-        if fetch_data.has_access(org.uuid, request.user, "member", member) is False:
+        if fetch_data.has_access(org_uuid, request.user, "member", member) is False:
             return read_data.get_403_response()
 
         serializer = self.serializer_class(member)
@@ -725,11 +725,11 @@ class MemberDesignationAPI(views.APIView):
         org_uuid = request.headers.get("organization-uuid")
 
         member_uuid = self.kwargs.get("uuid")
-        member = fetch_data.get_member_by_uuid(org.uuid, member_uuid)
+        member = fetch_data.get_member_by_uuid(org_uuid, member_uuid)
         if member is None:
             return read_data.get_404_response("Member")
 
-        if fetch_data.has_access(org.uuid, request.user, "member", member) is False:
+        if fetch_data.has_access(org_uuid, request.user, "member", member) is False:
             return read_data.get_403_response()
 
         serializer = self.serializer_class(member)
@@ -778,11 +778,11 @@ class MemberDepartmentAPI(views.APIView):
         org_uuid = request.headers.get("organization-uuid")
 
         member_uuid = self.kwargs.get("uuid")
-        member = fetch_data.get_member_by_uuid(org.uuid, member_uuid)
+        member = fetch_data.get_member_by_uuid(org_uuid, member_uuid)
         if member is None:
             return read_data.get_404_response("Member")
 
-        if fetch_data.has_access(org.uuid, request.user, "member", member) is False:
+        if fetch_data.has_access(org_uuid, request.user, "member", member) is False:
             return read_data.get_403_response()
 
         serializer = self.serializer_class(member)
@@ -830,11 +830,11 @@ class MemberCostCenterAPI(views.APIView):
         org_uuid = request.headers.get("organization-uuid")
 
         member_uuid = self.kwargs.get("uuid")
-        member = fetch_data.get_member_by_uuid(org.uuid, member_uuid)
+        member = fetch_data.get_member_by_uuid(org_uuid, member_uuid)
         if member is None:
             return read_data.get_404_response("Member")
 
-        if fetch_data.has_access(org.uuid, request.user, "member", member) is False:
+        if fetch_data.has_access(org_uuid, request.user, "member", member) is False:
             return read_data.get_403_response()
 
         serializer = self.serializer_class(member)
